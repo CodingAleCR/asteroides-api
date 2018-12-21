@@ -11,16 +11,15 @@ if (isset($_GET['max'])) {
    $sql .= ' LIMIT ?';
 }
 
-$cursor = $con->stmt_init(); 
-if ($cursor->prepare($sql)) { 
-    if (isset($_GET['max'])) {
-        $cursor->bind_param("s",$_GET['max']);
-    }
-    $cursor->execute(); $cursor->bind_result($puntos, $nombre); while($cursor->fetch()) {
-        echo $puntos.' '.$nombre."\n";
-    }
-    echo "\n";
-    $cursor->close();
+$result = pg_query($con, $sql);
+if (!$result) {
+echo "An error occurred.\n";
+exit;
+}
+  
+while ($row = pg_fetch_row($result)) {
+echo "Author: $row[0]  E-mail: $row[1]";
+echo "<br />\n";
 }
 
 $con->close();
