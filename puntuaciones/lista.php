@@ -18,6 +18,7 @@ if (!$result) {
 }
   
 while ($row = pg_fetch_row($result)) {
+    echo "Result";
     echo "$row[0] - $row[1]\n";
 }
 
