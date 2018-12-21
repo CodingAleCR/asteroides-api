@@ -15,7 +15,7 @@ if (isset($_GET['max'])) {
 }
 
 echo "Statement prepared: $sql.<br/>";
-$result = pg_query($con, $sql);
+$result = pg_query($con, "SELECT puntos, nombre FROM puntuaciones ORDER BY fecha DESC");
 if (!$result) {
     echo "An error occurred.<br/>";
     exit;
