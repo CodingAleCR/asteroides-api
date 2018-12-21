@@ -20,7 +20,9 @@ if (!$result) {
     echo "An error occurred.<br/>";
     exit;
 }
-echo "Rows fetched!<br/>";
+$rows = pg_num_rows($result);
+
+echo $rows . " row(s) returned.\n";
 while ($line = pg_fetch_array($result, null, PGSQL_ASSOC)) {
     foreach ($line as $col_value) {
         echo "$col_value<br />\n";
