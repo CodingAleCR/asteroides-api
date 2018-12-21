@@ -17,13 +17,9 @@ if (!$result) {
     exit;
 }
   
-while ($row = pg_fetch_row($result)) {
-    echo "Result";
-    echo "$row[0] - $row[1]\n";
+while ($score = pg_fetch_object($result)) {
+    echo $score->puntos." - ".$score->nombre."\n";
 }
-
-// Free resultset
-pg_free_result($result);
 
 // Closing connection
 pg_close($con);
