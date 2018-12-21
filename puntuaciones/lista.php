@@ -13,14 +13,17 @@ if (isset($_GET['max'])) {
 
 $result = pg_query($con, $sql);
 if (!$result) {
-echo "An error occurred.\n";
-exit;
+    echo "An error occurred.\n";
+    exit;
 }
   
 while ($row = pg_fetch_row($result)) {
-echo "Author: $row[0]  E-mail: $row[1]";
-echo "<br />\n";
+    echo "$row[0] - $row[1]\n";
 }
 
-$con->close();
+// Free resultset
+pg_free_result($result);
+
+// Closing connection
+pg_close($sql);
 ?>
