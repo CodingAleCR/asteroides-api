@@ -21,10 +21,11 @@ if (!$result) {
     exit;
 }
 echo "Rows fetched!<br/>";
-while ($data = pg_fetch_object($result)) {
-    echo $data->puntos . " - ";
-    echo $data->nombre . "<br />";
-  }
+while ($line = pg_fetch_array($result, null, PGSQL_ASSOC)) {
+    foreach ($line as $col_value) {
+        echo "$col_value<br />\n";
+    }
+}
 pg_free_result($result);
 echo "Closing connection.<br/>";
 // Closing connection
