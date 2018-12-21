@@ -25,5 +25,5 @@ while ($row = pg_fetch_row($result)) {
 pg_free_result($result);
 
 // Closing connection
-pg_close($sql);
+pg_close($con);
 ?>
