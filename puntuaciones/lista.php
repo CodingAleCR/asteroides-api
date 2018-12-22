@@ -7,7 +7,6 @@ if (isset($_GET['max'])) {
    $sql .= " LIMIT ".$_GET['max'];
 }
 
-echo "Statement prepared: $sql.<br/>";
 $result = pg_query($con, $sql) or die("Cannot execute query: $query\n");
 
 while ($row = pg_fetch_assoc($result)) {
