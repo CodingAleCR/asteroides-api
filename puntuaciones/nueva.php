@@ -6,7 +6,7 @@ $con = pg_connect(getenv("DATABASE_URL")) or die ("Could not connect to server\n
    $fecha  = $_GET['fecha'];
 
 
-   $sql = "INSERT INTO puntuaciones VALUES (null,$puntos, '". $nombre . "', $fecha)";
+   $sql = "INSERT INTO puntuaciones(puntos, nombre, fecha) VALUES ($puntos, '". $nombre . "', $fecha)";
 
    pg_query($con, $sql) or die("Cannot execute query: $query\n");
 
